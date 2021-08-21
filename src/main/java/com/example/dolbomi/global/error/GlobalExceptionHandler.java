@@ -1,6 +1,5 @@
 package com.example.dolbomi.global.error;
 
-import com.example.dolbomi.auth.exception.UnauthorizedException;
 import com.example.dolbomi.global.common.FailResponse;
 import com.example.dolbomi.global.common.StatusEnum;
 import lombok.extern.slf4j.Slf4j;

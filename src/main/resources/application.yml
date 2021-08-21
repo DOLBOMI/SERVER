@@ -3,7 +3,6 @@ spring:
     url: jdbc:mysql://52.78.83.195:3306/Dolbomi
     username: woosung
     password: 1234
-#    driver-class-name: com.mysql.cj.jdbc.Driver
 
 mybatis:
   type-aliases-package: com.coupang.marketplace.*.domain

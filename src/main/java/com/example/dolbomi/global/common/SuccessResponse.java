@@ -2,9 +2,7 @@ package com.example.dolbomi.global.common;
 
 import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @Getter
 public class SuccessResponse {
 
