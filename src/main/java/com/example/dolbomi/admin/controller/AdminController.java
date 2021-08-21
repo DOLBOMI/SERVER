@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
-@RequestMapping("/users")
+@RequestMapping("/admins")
 @RequiredArgsConstructor
 @RestController
 public class AdminController {

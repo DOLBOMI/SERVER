@@ -5,5 +5,5 @@ spring:
     password: 1234
 
 mybatis:
-  type-aliases-package: com.coupang.marketplace.*.domain
+  type-aliases-package: com.example.dolbomi.*.domain
   mapper-locations: mybatis/mapper/**/*.xml
