@@ -39,8 +39,8 @@ public class AdminController {
     }
 
     @PutMapping("/{idx}/status")
-    public SuccessResponse changeStatus(@PathVariable(name = "idx") @Valid @RequestBody final ChangeRequestDto requestDto) {
-        adminService.changeStatus(requestDto);
+    public SuccessResponse changeStatus(@PathVariable(name = "idx") Integer idx, @Valid @RequestBody final ChangeRequestDto requestDto) {
+        adminService.changeStatus(idx, requestDto);
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
                 .message("노인 상태 변경 성공")

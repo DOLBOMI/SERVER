@@ -55,11 +55,19 @@ public class AdminService {
         }
     }
 
-    public void changeStatus(ChangeRequestDto dto) {
-        Long oldIndex = dto.getOldIndex();
+    public void changeStatus(Integer idx, ChangeRequestDto dto) {
+        Long oldIndex = new Long(idx);
         Long adminIndex = dto.getAdminIndex();
         Long status = dto.getStatus();
-        adminRepository.ChangeUserStatus(status, oldIndex);
-    }
+        
+        if (status != 0 && status != 1 && status != 2) {
+            throw new IllegalArgumentException("올바른 상태값을 입력해주세요.");
+        }
 
+        if(!checkIsUserAdmin(oldIndex, adminIndex)) {
+            throw new IllegalArgumentException("관리하고 있는 노인이 아닙니다.");
+        } else {
+            adminRepository.ChangeUserStatus(status, oldIndex);
+        }
+    }
 }

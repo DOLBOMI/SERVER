@@ -12,9 +12,9 @@
         DELETE FROM UserAdmin WHERE oldIndex = #{oldIndex} AND adminIndex = #{adminIndex};
     </delete>
 
-    <insert id="ChangeUserStatus" parameterType="Long">
-        UPDATE User SET status = #{status} WHERE oldIndex = #{oldIndex})
-    </insert>
+    <update id="ChangeUserStatus" parameterType="Long">
+        UPDATE User SET status = #{status} WHERE userIndex = #{oldIndex};
+    </update>
 
     <select id="checkIsRegister" resultType="Integer">
         SELECT userAdminIndex FROM UserAdmin WHERE oldIndex = #{oldIndex} and adminIndex = #{adminIndex};
