@@ -8,9 +8,9 @@
         VALUES (#{oldIndex}, #{adminIndex})
     </insert>
 
-    <insert id="DeleteUserAdmin" parameterType="Long">
-        DELETE FROM UserAdmin WHERE oldIndex = #{oldIndex} AND WHERE adminIndex = #{adminIndex})
-    </insert>
+    <delete id="DeleteUserAdmin" parameterType="Long">
+        DELETE FROM UserAdmin WHERE oldIndex = #{oldIndex} AND adminIndex = #{adminIndex};
+    </delete>
 
     <insert id="ChangeUserStatus" parameterType="Long">
         UPDATE User SET status = #{status} WHERE oldIndex = #{oldIndex})

@@ -47,7 +47,12 @@ public class AdminService {
     public void delete(DeleteRequestDto dto) {
         Long oldIndex = dto.getOldIndex();
         Long adminIndex = dto.getAdminIndex();
-        adminRepository.DeleteUserAdmin(oldIndex, adminIndex);
+
+        if(!checkIsUserAdmin(oldIndex, adminIndex)) {
+            throw new IllegalArgumentException("관리하고 있는 노인이 아닙니다.");
+        } else {
+            adminRepository.DeleteUserAdmin(oldIndex, adminIndex);
+        }
     }
 
     public void changeStatus(ChangeRequestDto dto) {
