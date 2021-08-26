@@ -8,15 +8,15 @@ import javax.validation.constraints.NotNull;
 @Getter
 public class RegisterRequestDto {
 
-    @NotNull(message = "노인 인덱스를 입력해주세요")
-    private Long oldIndex;
+    @NotNull(message = "노인 등록번호를 입력해주세요")
+    private Long registerNo;
 
     @NotNull(message = "관리자 인덱스를 입력해주세요")
     private Long adminIndex;
 
     @Builder
-    public RegisterRequestDto(Long oldIndex, Long adminIndex) {
-        this.oldIndex = oldIndex;
+    public RegisterRequestDto(Long registerNo, Long adminIndex) {
+        this.registerNo = registerNo;
         this.adminIndex = adminIndex;
     }
 

@@ -7,4 +7,21 @@
         INSERT INTO UserAdmin (oldIndex, adminIndex)
         VALUES (#{oldIndex}, #{adminIndex})
     </insert>
+
+    <insert id="DeleteUserAdmin" parameterType="Long">
+        DELETE FROM UserAdmin WHERE oldIndex = #{oldIndex} AND WHERE adminIndex = #{adminIndex})
+    </insert>
+
+    <insert id="ChangeUserStatus" parameterType="Long">
+        UPDATE User SET status = #{status} WHERE oldIndex = #{oldIndex})
+    </insert>
+
+    <select id="checkIsRegister" resultType="Integer">
+        SELECT userAdminIndex FROM UserAdmin WHERE oldIndex = #{oldIndex} and adminIndex = #{adminIndex};
+    </select>
+
+    <select id="checkIsValidRegisterNo" resultType="Integer">
+        SELECT userIndex FROM User WHERE registerNo = #{registerNo};
+    </select>
+
 </mapper>
