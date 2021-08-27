@@ -24,7 +24,7 @@ public class UserService {
 	private final Sha256Encryptor sha256Encryptor;
 
 	public void join(JoinRequestDto dto){
-		if (checkIsUserExist(dto.getRegisterInfoIndex())) {
+		if (checkIsUserExist(dto.getRegisterNo())) {
 			throw new IllegalArgumentException("이미 등록된 행정번호입니다.");
 		}
 
@@ -36,12 +36,12 @@ public class UserService {
 		String encryptedPassword = sha256Encryptor.encrypt(cryptoData);
 		ZonedDateTime now = ZonedDateTime.now(ZoneId.of(LocalTimezone));
 
-		User user = dto.makeEntity(salt, encryptedPassword, now, now);
+		User user = dto.makeEntity(salt, encryptedPassword, now, now, 0, 0);
 
 		userRepository.insertUser(user);
 	}
 
-	private boolean checkIsUserExist(Integer registerInfoIndex) {
-		return userRepository.findByRegisterInfoIndex(registerInfoIndex).isPresent();
+	private boolean checkIsUserExist(Integer registerNo) {
+		return userRepository.findByRegisterNo(registerNo).isPresent();
 	}
 }

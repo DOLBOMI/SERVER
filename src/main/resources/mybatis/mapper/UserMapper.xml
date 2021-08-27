@@ -4,12 +4,12 @@
 
 <mapper namespace="com.coupang.marketplace.repository.UserRepository">
     <insert id="insertUser" parameterType="User">
-        INSERT INTO USER (register_info_index, password, name, age, sex, phoneNo, salt, createdAt, updatedAt)
-        VALUES (#{register_info_index}, #{password}, #{name}, #{age}, #{sex}, #{phoneNo}, #{salt}, #{createdAt}, #{updatedAt})
+        INSERT INTO USER (register_no, salt, password, name, age, sex, weight, height, phone_no, phone_no_119, created_at, updated_at, status, is_approved)
+        VALUES (#{register_no}, #{salt}, #{password}, #{name}, #{age}, #{sex}, #{weight}, #{height}, #{phone_no}, #{phone_no_119}, #{created_at}, #{updated_at}, #{status}, #{is_approved})
     </insert>
-    <select id="findByRegisterInfoIndex" resultType="User">
-        SELECT register_info_index, password, name, age, sex, phoneNo, salt, createdAt, updatedAt
+    <select id="findByRegisterNo" resultType="User">
+        SELECT register_no, salt, password, name, age, sex, weight, height, phone_no, phone_no_119, created_at, updated_at, status, is_approved
         FROM USER
-        WHERE register_info_index = #{register_info_index}
+        WHERE register_no = #{register_no}
     </select>
 </mapper>
