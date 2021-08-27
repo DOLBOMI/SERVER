@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.coupang.marketplace.repository.UserRepository">
+    <insert id="insertUser" parameterType="User">
+        INSERT INTO USER (register_no, salt, password, name, age, sex, weight, height, phone_no, phone_no_119, created_at, updated_at, status, is_approved)
+        VALUES (#{register_no}, #{salt}, #{password}, #{name}, #{age}, #{sex}, #{weight}, #{height}, #{phone_no}, #{phone_no_119}, #{created_at}, #{updated_at}, #{status}, #{is_approved})
+    </insert>
+    <select id="findByRegisterNo" resultType="User">
+        SELECT register_no, salt, password, name, age, sex, weight, height, phone_no, phone_no_119, created_at, updated_at, status, is_approved
+        FROM USER
+        WHERE register_no = #{register_no}
+    </select>
+</mapper>
