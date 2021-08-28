@@ -10,11 +10,10 @@ public class FcmRequestDto {
 
     String targetToken;
     String title;
-    String body;
+    //String messageBody;
 
     @Builder
-    public FcmRequestDto(String targetToken, String title, String body){
-        this.body = body;
+    public FcmRequestDto(String targetToken, String title){
         this.title = title;
         this.targetToken = targetToken;
     }
