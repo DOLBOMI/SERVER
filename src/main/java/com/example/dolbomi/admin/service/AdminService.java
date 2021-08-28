@@ -20,8 +20,9 @@ public class AdminService {
         adminRepository.insertUserAdmin(oldIndex, adminIndex);
     }
 
-    public List<SimpleUser> viewAll(){
-        return adminRepository.findAllUser();
+    public List<SimpleUser> viewAll(Integer registerNo){
+        Integer adminIndex = adminRepository.findIndexByRegisterNo(registerNo);
+        return adminRepository.findAllUser(adminIndex);
     }
 
     public List<SimpleUser> viewOld(){

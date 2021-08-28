@@ -12,7 +12,7 @@
         FROM User, UserAdmin
         WHERE
             (User.userIndex=UserAdmin.oldIndex
-                and UserAdmin.adminIndex=1);
+                and UserAdmin.adminIndex=#{adminIndex});
     </select>
     <select id="findUser" resultType="SimpleUser">
         SELECT Distinct userIndex, name, registerNo, status
@@ -30,6 +30,11 @@
     </select>
     <select id="findByRegisterNo" resultType="Admin">
         SELECT adminIndex, adminPhoneNo, registerNo, password, name
+        FROM Admin
+        WHERE registerNo = #{registerNo}
+    </select>
+    <select id="findIndexByRegisterNo" resultType="Integer">
+        SELECT adminIndex
         FROM Admin
         WHERE registerNo = #{registerNo}
     </select>

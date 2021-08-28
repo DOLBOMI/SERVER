@@ -14,11 +14,13 @@ public interface AdminRepository {
 
     void insertUserAdmin(Long oldIndex, Long adminIndex);
 
-    List<SimpleUser> findAllUser();
+    List<SimpleUser> findAllUser(Integer adminIndex);
 
     List<SimpleUser> findUser();
 
     List<SimpleUser> findUserByStatus();
 
     Optional<Admin> findByRegisterNo(int registerNo);
+
+    Integer findIndexByRegisterNo(Integer registerNo);
 }

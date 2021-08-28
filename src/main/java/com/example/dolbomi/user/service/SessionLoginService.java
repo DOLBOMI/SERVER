@@ -64,4 +64,8 @@ public class SessionLoginService implements LoginService{
 		httpSession.removeAttribute(LOGIN_USER_REGISTER_NO);
 		httpSession.removeAttribute(LOGIN_ADMIN_REGISTER_NO);
 	}
+
+	public Integer getAdminRegisterNo(){
+		return (Integer)httpSession.getAttribute(LOGIN_ADMIN_REGISTER_NO);
+	}
 }

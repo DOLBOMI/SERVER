@@ -7,6 +7,8 @@ import com.example.dolbomi.global.auth.LoginType;
 import com.example.dolbomi.global.common.StatusEnum;
 import com.example.dolbomi.global.common.SuccessResponse;
 import com.example.dolbomi.user.domain.SimpleUser;
+import com.example.dolbomi.user.service.SessionLoginService;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -20,12 +22,13 @@ import java.util.List;
 public class AdminController {
 
     private final AdminService adminService;
+    private final SessionLoginService sessionLoginService;
 
     @AuthRequired(type = LoginType.ADMIN)
     @GetMapping("/status")
     public SuccessResponse viewAll() {
-        List<SimpleUser> arr = adminService.viewAll();
-
+        Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
+        List<SimpleUser> arr = adminService.viewAll(adminRegisterNo);
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
                 .message("전체 조회 성공")
