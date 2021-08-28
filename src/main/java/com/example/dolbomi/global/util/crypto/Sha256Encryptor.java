@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class Sha256Encryptor {
+public class Sha256Encryptor implements Encryptor{
 
     private static final String algorithm = "SHA-256";
 
