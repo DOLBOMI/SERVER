@@ -28,8 +28,10 @@ public class JoinRequestDto {
 	@NotNull(message = "성별을 선택해주세요")
 	private int sex;
 
+	@NotNull(message = "키를 입력해주세요")
 	private int height;
 
+	@NotNull(message = "몸무게를 입력해주세요")
 	private int weight;
 
 	@NotBlank(message = "전화번호를 입력해주세요")
