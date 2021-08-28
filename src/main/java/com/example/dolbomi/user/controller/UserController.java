@@ -26,7 +26,7 @@ public class UserController {
 		userService.join(dto);
 		SuccessResponse res = SuccessResponse.builder()
 			.status(StatusEnum.CREATED)
-			.message("성공")
+			.message("회원가입 성공")
 			.build();
 		return res;
 	}
