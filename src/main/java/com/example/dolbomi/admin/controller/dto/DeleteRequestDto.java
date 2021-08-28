@@ -6,17 +6,17 @@ import lombok.Getter;
 import javax.validation.constraints.NotNull;
 
 @Getter
-public class RegisterRequestDto {
+public class DeleteRequestDto {
 
-    @NotNull(message = "노인 등록번호를 입력해주세요")
-    private Integer registerNo;
+    @NotNull(message = "노인 인덱스를 입력해주세요")
+    private Integer oldIndex;
 
     @NotNull(message = "관리자 인덱스를 입력해주세요")
     private Integer adminIndex;
 
     @Builder
-    public RegisterRequestDto(Integer registerNo, Integer adminIndex) {
-        this.registerNo = registerNo;
+    public DeleteRequestDto(Integer oldIndex, Integer adminIndex) {
+        this.oldIndex = oldIndex;
         this.adminIndex = adminIndex;
     }
 }

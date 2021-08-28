@@ -12,7 +12,7 @@ import java.util.Optional;
 @Repository
 public interface AdminRepository {
 
-    void insertUserAdmin(Long oldIndex, Long adminIndex);
+    void insertUserAdmin(Integer oldIndex, Integer adminIndex);
 
     List<SimpleUser> findAllUser(Integer adminIndex);
 
@@ -21,6 +21,13 @@ public interface AdminRepository {
     List<SimpleUser> findUserByStatus(Integer adminIndex, Integer status);
 
     Optional<Admin> findByRegisterNo(int registerNo);
+    void deleteUserAdmin(Integer oldIndex, Integer adminIndex);
+
+    void changeUserStatus(Integer status, Integer oldIndex);
+
+    Integer checkIsRegister(Integer oldIndex, Integer adminIndex);
 
     Integer findIndexByRegisterNo(Integer registerNo);
+}
+    Integer checkIsValidRegisterNo(Integer registerNo);
 }

@@ -73,4 +73,24 @@ public class AdminController {
                 .build();
         return res;
     }
+
+    @DeleteMapping("/delete")
+    public SuccessResponse delete(@Valid @RequestBody final DeleteRequestDto requestDto) {
+        adminService.delete(requestDto);
+        SuccessResponse res = SuccessResponse.builder()
+                .status(StatusEnum.CREATED)
+                .message("노인 삭제 성공")
+                .build();
+        return res;
+    }
+
+    @PutMapping("/{idx}/status")
+    public SuccessResponse changeStatus(@PathVariable("idx") Integer idx, @Valid @RequestBody final ChangeRequestDto requestDto) {
+        adminService.changeStatus(idx, requestDto);
+        SuccessResponse res = SuccessResponse.builder()
+                .status(StatusEnum.CREATED)
+                .message("노인 상태 변경 성공")
+                .build();
+        return res;
+    }
 }
