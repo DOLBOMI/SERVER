@@ -16,17 +16,19 @@
     </select>
     <select id="findUser" resultType="SimpleUser">
         SELECT Distinct userIndex, name, registerNo, status
-        FROM User
+        FROM User, UserAdmin
         WHERE
-            (User.userIndex=1);
+            (User.userIndex=#{oldI}
+                and User.userIndex=UserAdmin.oldIndex
+                and UserAdmin.adminIndex=#{adminIndex});
     </select>
     <select id="findUserByStatus" resultType="SimpleUser">
         SELECT Distinct userIndex, name, registerNo, status
         FROM User, UserAdmin
         WHERE
-            (User.status = 1
+            (User.status = #{status}
                 and User.userIndex=UserAdmin.oldIndex
-                and UserAdmin.adminIndex=1);
+                and UserAdmin.adminIndex=#{adminIndex});
     </select>
     <select id="findByRegisterNo" resultType="Admin">
         SELECT adminIndex, adminPhoneNo, registerNo, password, name

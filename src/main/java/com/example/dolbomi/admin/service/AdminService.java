@@ -25,11 +25,13 @@ public class AdminService {
         return adminRepository.findAllUser(adminIndex);
     }
 
-    public List<SimpleUser> viewOld(){
-        return adminRepository.findUser();
+    public List<SimpleUser> viewOld(Integer registerNo, Integer oldI){
+        Integer adminIndex = adminRepository.findIndexByRegisterNo(registerNo);
+        return adminRepository.findUser(adminIndex, oldI);
     }
 
-    public List<SimpleUser> viewStatus(){
-        return adminRepository.findUserByStatus();
+    public List<SimpleUser> viewStatus(Integer registerNo, Integer status){
+        Integer adminIndex = adminRepository.findIndexByRegisterNo(registerNo);
+        return adminRepository.findUserByStatus(adminIndex, status);
     }
 }

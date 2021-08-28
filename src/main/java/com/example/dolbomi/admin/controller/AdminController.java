@@ -37,9 +37,10 @@ public class AdminController {
         return res;
     }
 
-    @GetMapping("/status/{oldIndex}")
-    public SuccessResponse viewOld() {
-        List<SimpleUser> arr = adminService.viewOld();
+    @GetMapping("/status/i={oldIndex}")
+    public SuccessResponse viewOld(@PathVariable("oldIndex") Integer oldI) {
+        Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
+        List<SimpleUser> arr = adminService.viewOld(adminRegisterNo, oldI);
 
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
@@ -49,9 +50,10 @@ public class AdminController {
         return res;
     }
 
-    @GetMapping("")
-    public SuccessResponse viewStatus() {
-        List<SimpleUser> arr = adminService.viewStatus();
+    @GetMapping("/status/s={status}")
+    public SuccessResponse viewStatus(@PathVariable("status") Integer s) {
+        Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
+        List<SimpleUser> arr = adminService.viewStatus(adminRegisterNo, s);
 
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)

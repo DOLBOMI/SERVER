@@ -16,9 +16,9 @@ public interface AdminRepository {
 
     List<SimpleUser> findAllUser(Integer adminIndex);
 
-    List<SimpleUser> findUser();
+    List<SimpleUser> findUser(Integer adminIndex, Integer oldI);
 
-    List<SimpleUser> findUserByStatus();
+    List<SimpleUser> findUserByStatus(Integer adminIndex, Integer status);
 
     Optional<Admin> findByRegisterNo(int registerNo);
 
