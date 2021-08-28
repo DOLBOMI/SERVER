@@ -28,4 +28,9 @@
                 and User.userIndex=UserAdmin.oldIndex
                 and UserAdmin.adminIndex=1);
     </select>
+    <select id="findByRegisterNo" resultType="Admin">
+        SELECT adminIndex, adminPhoneNo, registerNo, password, name
+        FROM Admin
+        WHERE registerNo = #{registerNo}
+    </select>
 </mapper>
