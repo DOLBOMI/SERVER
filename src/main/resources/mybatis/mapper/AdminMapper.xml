@@ -7,4 +7,25 @@
         INSERT INTO UserAdmin (oldIndex, adminIndex)
         VALUES (#{oldIndex}, #{adminIndex})
     </insert>
+    <select id="findAllUser" parameterType="Long">
+        SELECT Distinct userIndex, name, registerNo, status
+        FROM User, UserAdmin
+        WHERE
+            (User.userIndex=UserAdmin.oldIndex
+                and UserAdmin.adminIndex=#{adminIndex});
+    </select>
+    <select id="findUser" parameterType="Long">
+        SELECT Distinct userIndex, name, registerNo, status
+        FROM User
+        WHERE
+            (User.userIndex=#{userIndex});
+    </select>
+    <select id="findUserByStatus" parameterType="Long">
+        SELECT Distinct userIndex, name, registerNo, status
+        FROM User, UserAdmin
+        WHERE
+            (User.status = #{status}
+                and User.userIndex=UserAdmin.oldIndex
+                and UserAdmin.adminIndex=#{adminIndex});
+    </select>
 </mapper>
