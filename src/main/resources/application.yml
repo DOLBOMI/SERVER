@@ -3,6 +3,10 @@ spring:
     url: jdbc:mysql://52.78.83.195:3306/Dolbomi?serverTimezone=UTC&useLegacyDatetimeCode=false
     username: woosung
     password:
+  redis:
+    session:
+      host: localhost
+      port: 6379
 
 mybatis:
   type-aliases-package: com.example.dolbomi.*.domain
