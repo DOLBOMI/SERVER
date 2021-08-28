@@ -7,25 +7,25 @@
         INSERT INTO UserAdmin (oldIndex, adminIndex)
         VALUES (#{oldIndex}, #{adminIndex})
     </insert>
-    <select id="findAllUser" parameterType="Long">
+    <select id="findAllUser" resultType="SimpleUser">
         SELECT Distinct userIndex, name, registerNo, status
         FROM User, UserAdmin
         WHERE
             (User.userIndex=UserAdmin.oldIndex
-                and UserAdmin.adminIndex=#{adminIndex});
+                and UserAdmin.adminIndex=1);
     </select>
-    <select id="findUser" parameterType="Long">
+    <select id="findUser" resultType="SimpleUser">
         SELECT Distinct userIndex, name, registerNo, status
         FROM User
         WHERE
-            (User.userIndex=#{userIndex});
+            (User.userIndex=1);
     </select>
-    <select id="findUserByStatus" parameterType="Long">
+    <select id="findUserByStatus" resultType="SimpleUser">
         SELECT Distinct userIndex, name, registerNo, status
         FROM User, UserAdmin
         WHERE
-            (User.status = #{status}
+            (User.status = 1
                 and User.userIndex=UserAdmin.oldIndex
-                and UserAdmin.adminIndex=#{adminIndex});
+                and UserAdmin.adminIndex=1);
     </select>
 </mapper>

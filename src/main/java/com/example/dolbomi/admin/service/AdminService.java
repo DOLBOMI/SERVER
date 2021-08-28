@@ -1,11 +1,8 @@
 package com.example.dolbomi.admin.service;
 
-import com.example.dolbomi.admin.controller.dto.RegisterRequestDto;
-import com.example.dolbomi.admin.controller.dto.ViewAllRequestDto;
-import com.example.dolbomi.admin.controller.dto.ViewRequestDto;
-import com.example.dolbomi.admin.controller.dto.ViewStatusRequestDto;
+import com.example.dolbomi.admin.controller.dto.*;
 import com.example.dolbomi.admin.repository.AdminRepository;
-import com.example.dolbomi.user.domain.User;
+import com.example.dolbomi.user.domain.SimpleUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -23,15 +20,15 @@ public class AdminService {
         adminRepository.insertUserAdmin(oldIndex, adminIndex);
     }
 
-    public List<User> viewAll(ViewAllRequestDto dto){
-        return adminRepository.findAllUser(dto.getAdminIndex());
+    public List<SimpleUser> viewAll(){
+        return adminRepository.findAllUser();
     }
 
-    public List<User> viewOld(ViewRequestDto dto){
-        return adminRepository.findUser(dto.getOldIndex());
+    public List<SimpleUser> viewOld(){
+        return adminRepository.findUser();
     }
 
-    public List<User> viewStatus(ViewStatusRequestDto dto){
-        return adminRepository.findUserByStatus(dto.getAdminIndex(), dto.getStatus());
+    public List<SimpleUser> viewStatus(){
+        return adminRepository.findUserByStatus();
     }
 }

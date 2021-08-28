@@ -4,14 +4,12 @@ import com.example.dolbomi.admin.controller.dto.*;
 import com.example.dolbomi.admin.service.AdminService;
 import com.example.dolbomi.global.common.StatusEnum;
 import com.example.dolbomi.global.common.SuccessResponse;
-import com.example.dolbomi.user.domain.User;
+import com.example.dolbomi.user.domain.SimpleUser;
 import lombok.RequiredArgsConstructor;
-import org.springframework.cache.annotation.Cacheable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/admins")
@@ -21,11 +19,9 @@ public class AdminController {
 
     private final AdminService adminService;
 
-    @Cacheable
     @GetMapping("/status")
-    public SuccessResponse viewAll(@Valid @RequestBody final ViewAllRequestDto requestDto) {
-        List<User> arr = new ArrayList<>();
-        arr = adminService.viewAll(requestDto);
+    public SuccessResponse viewAll() {
+        List<SimpleUser> arr = adminService.viewAll();
 
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
@@ -35,11 +31,9 @@ public class AdminController {
         return res;
     }
 
-    @Cacheable
     @GetMapping("/status/{oldIndex}")
-    public SuccessResponse viewOld(@Valid @RequestBody final ViewRequestDto requestDto) {
-        List<User> arr = new ArrayList<>();
-        arr = adminService.viewOld(requestDto);
+    public SuccessResponse viewOld() {
+        List<SimpleUser> arr = adminService.viewOld();
 
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
@@ -49,11 +43,9 @@ public class AdminController {
         return res;
     }
 
-    @Cacheable
     @GetMapping("")
-    public SuccessResponse viewStatus(@Valid @RequestBody final ViewStatusRequestDto requestDto) {
-        List<User> arr = new ArrayList<>();
-        arr = adminService.viewStatus(requestDto);
+    public SuccessResponse viewStatus() {
+        List<SimpleUser> arr = adminService.viewStatus();
 
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)

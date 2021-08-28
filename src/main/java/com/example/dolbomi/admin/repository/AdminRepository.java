@@ -1,6 +1,6 @@
 package com.example.dolbomi.admin.repository;
 
-import com.example.dolbomi.user.domain.User;
+import com.example.dolbomi.user.domain.SimpleUser;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -12,9 +12,9 @@ public interface AdminRepository {
 
     void insertUserAdmin(Long oldIndex, Long adminIndex);
 
-    List<User> findAllUser(Long adminIndex);
+    List<SimpleUser> findAllUser();
 
-    List<User> findUser(Long oldIndex);
+    List<SimpleUser> findUser();
 
-    List<User> findUserByStatus(Long adminIndex, Long status);
+    List<SimpleUser> findUserByStatus();
 }
