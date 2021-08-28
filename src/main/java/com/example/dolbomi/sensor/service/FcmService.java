@@ -1,5 +1,5 @@
 package com.example.dolbomi.sensor.service;
-
+/*
 import com.example.dolbomi.sensor.dto.FcmMessage;
 import com.example.dolbomi.sensor.dto.FcmRequestDto;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -50,6 +50,8 @@ public class FcmService {
                 )
                 .validate_only(false)
                 .build();
+
+        //System.out.println(fcmMessage);
         return objectMapper.writeValueAsString(fcmMessage);
     }
 
@@ -61,3 +63,12 @@ public class FcmService {
         return googleCredentials.getAccessToken().getTokenValue();
     }
 }
+
+*/
+//
+//import org.springframework.stereotype.Component;
+//
+//@Component
+//public class FcmService {
+//
+//}
