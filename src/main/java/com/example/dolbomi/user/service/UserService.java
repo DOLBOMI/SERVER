@@ -41,7 +41,7 @@ public class UserService {
 		userRepository.insertUser(user);
 	}
 
-	private boolean checkIsUserExist(Integer registerNo) {
+	private boolean checkIsUserExist(int registerNo) {
 		return userRepository.findByRegisterNo(registerNo).isPresent();
 	}
 }
