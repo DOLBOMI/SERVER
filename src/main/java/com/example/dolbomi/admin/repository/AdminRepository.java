@@ -3,19 +3,17 @@ package com.example.dolbomi.admin.repository;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
 @Mapper
 @Repository
 public interface AdminRepository {
 
-    void insertUserAdmin(Long oldIndex, Long adminIndex);
+    void insertUserAdmin(Integer oldIndex, Integer adminIndex);
 
-    void DeleteUserAdmin(Long oldIndex, Long adminIndex);
+    void deleteUserAdmin(Integer oldIndex, Integer adminIndex);
 
-    void ChangeUserStatus(Long status, Long oldIndex);
+    void changeUserStatus(Integer status, Integer oldIndex);
 
-    Integer checkIsRegister(Long oldIndex, Long adminIndex);
+    Integer checkIsRegister(Integer oldIndex, Integer adminIndex);
 
-    Integer checkIsValidRegisterNo(Long registerNo);
+    Integer checkIsValidRegisterNo(Integer registerNo);
 }

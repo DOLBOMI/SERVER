@@ -39,7 +39,7 @@ public class AdminController {
     }
 
     @PutMapping("/{idx}/status")
-    public SuccessResponse changeStatus(@PathVariable(name = "idx") Integer idx, @Valid @RequestBody final ChangeRequestDto requestDto) {
+    public SuccessResponse changeStatus(@PathVariable("idx") Integer idx, @Valid @RequestBody final ChangeRequestDto requestDto) {
         adminService.changeStatus(idx, requestDto);
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
@@ -47,5 +47,4 @@ public class AdminController {
                 .build();
         return res;
     }
-
 }

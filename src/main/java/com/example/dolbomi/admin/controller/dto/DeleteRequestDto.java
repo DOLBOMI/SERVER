@@ -9,15 +9,14 @@ import javax.validation.constraints.NotNull;
 public class DeleteRequestDto {
 
     @NotNull(message = "노인 인덱스를 입력해주세요")
-    private Long oldIndex;
+    private Integer oldIndex;
 
     @NotNull(message = "관리자 인덱스를 입력해주세요")
-    private Long adminIndex;
+    private Integer adminIndex;
 
     @Builder
-    public DeleteRequestDto(Long oldIndex, Long adminIndex) {
+    public DeleteRequestDto(Integer oldIndex, Integer adminIndex) {
         this.oldIndex = oldIndex;
         this.adminIndex = adminIndex;
     }
-
 }

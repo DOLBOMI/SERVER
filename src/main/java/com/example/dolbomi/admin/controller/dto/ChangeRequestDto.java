@@ -9,15 +9,14 @@ import javax.validation.constraints.NotNull;
 public class ChangeRequestDto {
 
     @NotNull(message = "관리자 인덱스를 입력해주세요")
-    private Long adminIndex;
+    private Integer adminIndex;
 
     @NotNull(message = "상태 인덱스를 입력해주세요")
-    private Long status;
+    private Integer status;
 
     @Builder
-    public ChangeRequestDto(Long adminIndex, Long status) {
+    public ChangeRequestDto(Integer adminIndex, Integer status) {
         this.adminIndex = adminIndex;
         this.status = status;
     }
-
 }

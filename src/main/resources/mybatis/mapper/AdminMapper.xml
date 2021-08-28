@@ -3,25 +3,32 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.example.dolbomi.admin.repository.AdminRepository">
-    <insert id="insertUserAdmin" parameterType="Long">
+    <insert id="insertUserAdmin" parameterType="Integer">
         INSERT INTO UserAdmin (oldIndex, adminIndex)
         VALUES (#{oldIndex}, #{adminIndex})
     </insert>
 
-    <delete id="DeleteUserAdmin" parameterType="Long">
-        DELETE FROM UserAdmin WHERE oldIndex = #{oldIndex} AND adminIndex = #{adminIndex};
+    <delete id="DeleteUserAdmin" parameterType="Integer">
+        DELETE
+        FROM UserAdmin
+        WHERE oldIndex = #{oldIndex} AND adminIndex = #{adminIndex};
     </delete>
 
-    <update id="ChangeUserStatus" parameterType="Long">
-        UPDATE User SET status = #{status} WHERE userIndex = #{oldIndex};
+    <update id="ChangeUserStatus" parameterType="Integer">
+        UPDATE User
+        SET status = #{status}
+        WHERE userIndex = #{oldIndex};
     </update>
 
     <select id="checkIsRegister" resultType="Integer">
-        SELECT userAdminIndex FROM UserAdmin WHERE oldIndex = #{oldIndex} and adminIndex = #{adminIndex};
+        SELECT userAdminIndex
+        FROM UserAdmin
+        WHERE oldIndex = #{oldIndex} and adminIndex = #{adminIndex};
     </select>
 
     <select id="checkIsValidRegisterNo" resultType="Integer">
-        SELECT userIndex FROM User WHERE registerNo = #{registerNo};
+        SELECT userIndex
+        FROM User
+        WHERE registerNo = #{registerNo};
     </select>
-
 </mapper>
