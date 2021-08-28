@@ -29,6 +29,7 @@ public class SessionLoginService implements LoginService{
 			throw new IllegalArgumentException("존재하지 않는 행정번호입니다.");
 		}
 		Optional<User> user = userRepository.findByRegisterNo(dto.getRegisterNo());
+
 		CryptoData cryptoData = CryptoData.WithSaltBuilder()
 			.plainText(dto.getPassword())
 			.salt(user.get().getSalt())
@@ -38,6 +39,9 @@ public class SessionLoginService implements LoginService{
 		if(!encryptedPassword.equals(user.get().getPassword())){
 			throw new IllegalArgumentException("패스워드가 틀렸습니다.");
 		}
-		httpSession.setAttribute(SessionUtil.LOGIN_USER_REGISTER_NO, user.get().getRegisterNo());
+		if (user.get().getRegisterNo()<900000)
+			httpSession.setAttribute(SessionUtil.LOGIN_USER_REGISTER_NO, user.get().getRegisterNo());
+		else
+			httpSession.setAttribute(SessionUtil.LOGIN_ADMIN_REGISTER_NO, user.get().getRegisterNo());
 	}
 }
