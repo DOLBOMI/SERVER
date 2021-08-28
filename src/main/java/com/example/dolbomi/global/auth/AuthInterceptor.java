@@ -24,7 +24,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws UnauthorizedException {
 		try {
 			if (isNeedToAuth((HandlerMethod)handler)) {
-				getUserIdBySession(request);
+				getAdminIdBySession(request);
 			}
 			return true;
 		} catch (Exception e) {
@@ -37,13 +37,6 @@ public class AuthInterceptor implements HandlerInterceptor {
 			return false;
 		}
 		return true;
-	}
-
-	private String getUserIdBySession(HttpServletRequest request){
-		HttpSession session = request.getSession();
-		return Optional.ofNullable(session.getAttribute(SessionUtil.LOGIN_USER_REGISTER_NO))
-			.map(v -> v.toString())
-			.orElse(getAdminIdBySession(request));
 	}
 
 	private String getAdminIdBySession(HttpServletRequest request){
