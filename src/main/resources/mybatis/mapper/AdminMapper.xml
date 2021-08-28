@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dolbomi.admin.repository.AdminRepository">
+    <insert id="insertUserAdmin" parameterType="Long">
+        INSERT INTO UserAdmin (oldIndex, adminIndex)
+        VALUES (#{oldIndex}, #{adminIndex})
+    </insert>
+    <select id="findAllUser" resultType="SimpleUser">
+        SELECT Distinct userIndex, name, registerNo, status
+        FROM User, UserAdmin
+        WHERE
+            (User.userIndex=UserAdmin.oldIndex
+                and UserAdmin.adminIndex=#{adminIndex});
+    </select>
+    <select id="findUser" resultType="SimpleUser">
+        SELECT Distinct userIndex, name, registerNo, status
+        FROM User, UserAdmin
+        WHERE
+            (User.userIndex=#{oldI}
+                and User.userIndex=UserAdmin.oldIndex
+                and UserAdmin.adminIndex=#{adminIndex});
+    </select>
+    <select id="findUserByStatus" resultType="SimpleUser">
+        SELECT Distinct userIndex, name, registerNo, status
+        FROM User, UserAdmin
+        WHERE
+            (User.status = #{status}
+                and User.userIndex=UserAdmin.oldIndex
+                and UserAdmin.adminIndex=#{adminIndex});
+    </select>
+    <select id="findByRegisterNo" resultType="Admin">
+        SELECT adminIndex, adminPhoneNo, registerNo, password, name
+        FROM Admin
+        WHERE registerNo = #{registerNo}
+    </select>
+    <select id="findIndexByRegisterNo" resultType="Integer">
+        SELECT adminIndex
+        FROM Admin
+        WHERE registerNo = #{registerNo}
+    </select>
+</mapper>

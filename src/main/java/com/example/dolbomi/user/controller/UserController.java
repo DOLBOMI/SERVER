@@ -2,6 +2,7 @@ package com.example.dolbomi.user.controller;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -16,6 +17,7 @@ import com.example.dolbomi.user.service.UserService;
 
 import lombok.RequiredArgsConstructor;
 
+@ResponseStatus
 @RequiredArgsConstructor
 @RestController
 public class UserController {
@@ -24,7 +26,6 @@ public class UserController {
 
 	private final LoginService loginService;
 
-	@ResponseStatus
 	@PostMapping("/users/sign-up")
 	public SuccessResponse join(@Valid @RequestBody JoinRequestDto dto){
 		userService.join(dto);
@@ -35,7 +36,6 @@ public class UserController {
 		return res;
 	}
 
-	@ResponseStatus
 	@PostMapping("/users/sign-in")
 	public SuccessResponse login(@Valid @RequestBody LoginRequestDto dto){
 		loginService.login(dto);
@@ -44,5 +44,10 @@ public class UserController {
 			.message("로그인 성공")
 			.build();
 		return res;
+	}
+
+	@GetMapping("/users/logout")
+	public void logoutUser(){
+		loginService.logout();
 	}
 }
