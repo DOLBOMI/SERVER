@@ -1,5 +1,7 @@
 package com.example.dolbomi.user.service;
 
+import static com.example.dolbomi.global.util.session.SessionUtil.*;
+
 import java.util.Optional;
 
 import javax.servlet.http.HttpSession;
@@ -8,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.example.dolbomi.global.util.crypto.CryptoData;
 import com.example.dolbomi.global.util.crypto.Encryptor;
-import com.example.dolbomi.global.util.session.SessionUtil;
 import com.example.dolbomi.user.controller.dto.LoginRequestDto;
 import com.example.dolbomi.user.domain.User;
 import com.example.dolbomi.user.repository.UserRepository;
@@ -39,6 +40,12 @@ public class SessionLoginService implements LoginService{
 		if(!encryptedPassword.equals(user.get().getPassword())){
 			throw new IllegalArgumentException("패스워드가 틀렸습니다.");
 		}
+		httpSession.setAttribute(LOGIN_USER_REGISTER_NO, user.get().getRegisterNo());
+	}
+
+	@Override
+	public void logout(){
+		httpSession.removeAttribute(LOGIN_USER_REGISTER_NO);
 		if (user.get().getRegisterNo()<900000)
 			httpSession.setAttribute(SessionUtil.LOGIN_USER_REGISTER_NO, user.get().getRegisterNo());
 		else
