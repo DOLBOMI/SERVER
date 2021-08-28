@@ -3,6 +3,7 @@ package com.example.dolbomi.user.controller.dto;
 import java.time.ZonedDateTime;
 
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 import com.example.dolbomi.user.domain.User;
 
@@ -12,8 +13,8 @@ import lombok.Getter;
 @Getter
 public class JoinRequestDto {
 
-	@NotBlank(message = "노인 행정번호를 입력해주세요")
-	private Integer registerNo;
+	@NotNull(message = "노인 행정번호를 입력해주세요")
+	private int registerNo;
 
 	@NotBlank(message = "비밀번호를 입력해주세요")
 	private String password;
@@ -21,15 +22,15 @@ public class JoinRequestDto {
 	@NotBlank(message = "이름을 입력해주세요")
 	private String name;
 
-	@NotBlank(message = "나이를 입력해주세요")
-	private Integer age;
+	@NotNull(message = "나이를 입력해주세요")
+	private int age;
 
-	@NotBlank(message = "성별을 선택해주세요")
-	private Integer sex;
+	@NotNull(message = "성별을 선택해주세요")
+	private int sex;
 
-	private Integer height;
+	private int height;
 
-	private Integer weight;
+	private int weight;
 
 	@NotBlank(message = "전화번호를 입력해주세요")
 	private String phoneNo;

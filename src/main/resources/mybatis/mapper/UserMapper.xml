@@ -2,14 +2,14 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.coupang.marketplace.repository.UserRepository">
+<mapper namespace="com.example.dolbomi.user.repository.UserRepository">
     <insert id="insertUser" parameterType="User">
-        INSERT INTO USER (register_no, salt, password, name, age, sex, weight, height, phone_no, phone_no_119, created_at, updated_at, status, is_approved)
-        VALUES (#{register_no}, #{salt}, #{password}, #{name}, #{age}, #{sex}, #{weight}, #{height}, #{phone_no}, #{phone_no_119}, #{created_at}, #{updated_at}, #{status}, #{is_approved})
+        INSERT INTO User (registerNo, salt, password, name, age, sex, weight, height, phoneNo, phoneNo119, createdAt, updatedAt, status, isApproved)
+        VALUES (#{registerNo}, #{salt}, #{password}, #{name}, #{age}, #{sex}, #{weight}, #{height}, #{phoneNo}, #{phoneNo119}, #{createdAt}, #{updatedAt}, #{status}, #{isApproved})
     </insert>
     <select id="findByRegisterNo" resultType="User">
-        SELECT register_no, salt, password, name, age, sex, weight, height, phone_no, phone_no_119, created_at, updated_at, status, is_approved
-        FROM USER
-        WHERE register_no = #{register_no}
+        SELECT userIndex, registerNo, salt, password, name, age, sex, weight, height, phoneNo, phoneNo119, createdAt, updatedAt, status, isApproved
+        FROM User
+        WHERE registerNo = #{registerNo}
     </select>
 </mapper>
