@@ -28,6 +28,6 @@ public interface AdminRepository {
     Integer checkIsRegister(Integer oldIndex, Integer adminIndex);
 
     Integer findIndexByRegisterNo(Integer registerNo);
-}
+
     Integer checkIsValidRegisterNo(Integer registerNo);
 }

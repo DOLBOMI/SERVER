@@ -7,7 +7,7 @@
         INSERT INTO User (registerNo, salt, password, name, age, sex, weight, height, phoneNo, phoneNo119, createdAt, updatedAt, status, isApproved)
         VALUES (#{registerNo}, #{salt}, #{password}, #{name}, #{age}, #{sex}, #{weight}, #{height}, #{phoneNo}, #{phoneNo119}, #{createdAt}, #{updatedAt}, #{status}, #{isApproved})
     </insert>
-    <select id="findByRegisterNo" resultType="User">
+    <select id="findByUserRegisterNo" resultType="User">
         SELECT userIndex, registerNo, salt, password, name, age, sex, weight, height, phoneNo, phoneNo119, createdAt, updatedAt, status, isApproved
         FROM User
         WHERE registerNo = #{registerNo}

@@ -13,5 +13,5 @@ public interface UserRepository {
 
 	void insertUser(User user);
 
-	Optional<User> findByRegisterNo(int registerNo);
+	Optional<User> findByUserRegisterNo(int registerNo);
 }

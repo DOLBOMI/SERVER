@@ -42,6 +42,6 @@ public class UserService {
 	}
 
 	private boolean checkIsUserExist(int registerNo) {
-		return userRepository.findByRegisterNo(registerNo).isPresent();
+		return userRepository.findByUserRegisterNo(registerNo).isPresent();
 	}
 }

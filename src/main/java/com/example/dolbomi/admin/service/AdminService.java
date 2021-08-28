@@ -78,7 +78,6 @@ public class AdminService {
         }
         adminRepository.changeUserStatus(status, oldIndex);
     }
-}
 
     public List<SimpleUser> viewStatus(Integer registerNo, Integer status){
         Integer adminIndex = adminRepository.findIndexByRegisterNo(registerNo);

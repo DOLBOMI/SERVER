@@ -33,12 +33,12 @@ public class SessionLoginService implements LoginService{
 		Optional<User> user;
 		Optional<Admin> admin;
 
-		if (!(userRepository.findByRegisterNo(dto.getRegisterNo()).isPresent() || adminRepository.findByRegisterNo(dto.getRegisterNo()).isPresent())){
+		if (!(userRepository.findByUserRegisterNo(dto.getRegisterNo()).isPresent() || adminRepository.findByRegisterNo(dto.getRegisterNo()).isPresent())){
 			throw new IllegalArgumentException("존재하지 않는 행정번호입니다.");
 		}
 
 		if(dto.getRegisterNo()<900000){
-			user = userRepository.findByRegisterNo(dto.getRegisterNo());
+			user = userRepository.findByUserRegisterNo(dto.getRegisterNo());
 			CryptoData cryptoData = CryptoData.WithSaltBuilder()
 				.plainText(dto.getPassword())
 				.salt(user.get().getSalt())
