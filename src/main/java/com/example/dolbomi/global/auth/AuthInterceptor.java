@@ -21,15 +21,10 @@ import com.example.dolbomi.global.util.session.SessionUtil;
 public class AuthInterceptor implements HandlerInterceptor {
 
 	@Override
-	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws
-		UnauthorizedException {
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws UnauthorizedException {
 		try {
 			if (isNeedToAuth((HandlerMethod)handler)) {
-				String userIdBySession = getUserIdBySession(request);
-				String userIdByPath = getUserIdByPathVariable(request);
-				if (!userIdBySession.equals(userIdByPath)) {
-					throw new UnauthorizedException();
-				};
+				getUserIdBySession(request);
 			}
 			return true;
 		} catch (Exception e) {
@@ -48,12 +43,13 @@ public class AuthInterceptor implements HandlerInterceptor {
 		HttpSession session = request.getSession();
 		return Optional.ofNullable(session.getAttribute(SessionUtil.LOGIN_USER_REGISTER_NO))
 			.map(v -> v.toString())
-			.orElseThrow(NoAuthorizationData::new);
+			.orElse(getAdminIdBySession(request));
 	}
 
-	private String getUserIdByPathVariable(HttpServletRequest request){
-		Map<String, String> pathVariables = (Map<String, String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-		return Optional.ofNullable(pathVariables.get("id"))
+	private String getAdminIdBySession(HttpServletRequest request){
+		HttpSession session = request.getSession();
+		return Optional.ofNullable(session.getAttribute(SessionUtil.LOGIN_ADMIN_REGISTER_NO))
+			.map(v -> v.toString())
 			.orElseThrow(NoAuthorizationData::new);
 	}
 }

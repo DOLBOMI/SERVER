@@ -2,6 +2,8 @@ package com.example.dolbomi.admin.controller;
 
 import com.example.dolbomi.admin.controller.dto.*;
 import com.example.dolbomi.admin.service.AdminService;
+import com.example.dolbomi.global.auth.AuthRequired;
+import com.example.dolbomi.global.auth.LoginType;
 import com.example.dolbomi.global.common.StatusEnum;
 import com.example.dolbomi.global.common.SuccessResponse;
 import com.example.dolbomi.user.domain.SimpleUser;
@@ -19,6 +21,7 @@ public class AdminController {
 
     private final AdminService adminService;
 
+    @AuthRequired(type = LoginType.ADMIN)
     @GetMapping("/status")
     public SuccessResponse viewAll() {
         List<SimpleUser> arr = adminService.viewAll();
