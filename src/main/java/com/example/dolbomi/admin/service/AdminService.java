@@ -17,10 +17,10 @@ public class AdminService {
 
     private final AdminRepository adminRepository;
 
-    public void register(RegisterRequestDto dto) {
-        Integer adminIndex = dto.getAdminIndex();
-        Integer registerNo = dto.getRegisterNo();
+    public void register(RegisterRequestDto dto, Integer adminRegisterNo) {
+        Integer adminIndex = adminRepository.findIndexByRegisterNo(adminRegisterNo);
 
+        Integer registerNo = dto.getRegisterNo();
         Integer oldIndex = checkIsRegisterNo(registerNo);
 
         if (oldIndex < 1) {
@@ -40,6 +40,7 @@ public class AdminService {
         Integer adminIndex = adminRepository.findIndexByRegisterNo(registerNo);
         return adminRepository.findUser(adminIndex, oldI);
     }
+
     private boolean checkIsUserAdmin(Integer oldIndex, Integer adminIndex) {
         if(adminRepository.checkIsRegister(oldIndex, adminIndex) == null || adminRepository.checkIsRegister(oldIndex, adminIndex) < 1) {
             return false;
@@ -55,9 +56,10 @@ public class AdminService {
         return 0;
     }
 
-    public void delete(DeleteRequestDto dto) {
+    public void delete(DeleteRequestDto dto, Integer adminRegisterNo) {
+        Integer adminIndex = adminRepository.findIndexByRegisterNo(adminRegisterNo);
+
         Integer oldIndex = dto.getOldIndex();
-        Integer adminIndex = dto.getAdminIndex();
 
         if(!checkIsUserAdmin(oldIndex, adminIndex)) {
             throw new IllegalArgumentException("관리하고 있는 노인이 아닙니다.");
@@ -65,9 +67,9 @@ public class AdminService {
         adminRepository.deleteUserAdmin(oldIndex, adminIndex);
     }
 
-    public void changeStatus(Integer idx, ChangeRequestDto dto) {
+    public void changeStatus(Integer idx, Integer adminRegisterNo, ChangeRequestDto dto) {
         Integer oldIndex = idx;
-        Integer adminIndex = dto.getAdminIndex();
+        Integer adminIndex = adminRepository.findIndexByRegisterNo(adminRegisterNo);
         Integer status = dto.getStatus();
 
         if (status != 0 && status != 1 && status != 2) {

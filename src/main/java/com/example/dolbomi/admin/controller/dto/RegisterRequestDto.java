@@ -11,12 +11,8 @@ public class RegisterRequestDto {
     @NotNull(message = "노인 등록번호를 입력해주세요")
     private Integer registerNo;
 
-    @NotNull(message = "관리자 인덱스를 입력해주세요")
-    private Integer adminIndex;
-
     @Builder
-    public RegisterRequestDto(Integer registerNo, Integer adminIndex) {
+    public RegisterRequestDto(Integer registerNo) {
         this.registerNo = registerNo;
-        this.adminIndex = adminIndex;
     }
 }

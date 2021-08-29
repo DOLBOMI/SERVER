@@ -66,7 +66,9 @@ public class AdminController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/register")
     public SuccessResponse register(@Valid @RequestBody final RegisterRequestDto requestDto) {
-        adminService.register(requestDto);
+        Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
+        adminService.register(requestDto, adminRegisterNo);
+
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
                 .message("노인 등록 성공")
@@ -76,7 +78,9 @@ public class AdminController {
 
     @DeleteMapping("/delete")
     public SuccessResponse delete(@Valid @RequestBody final DeleteRequestDto requestDto) {
-        adminService.delete(requestDto);
+        Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
+        adminService.delete(requestDto, adminRegisterNo);
+
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
                 .message("노인 삭제 성공")
@@ -86,7 +90,9 @@ public class AdminController {
 
     @PutMapping("/{idx}/status")
     public SuccessResponse changeStatus(@PathVariable("idx") Integer idx, @Valid @RequestBody final ChangeRequestDto requestDto) {
-        adminService.changeStatus(idx, requestDto);
+        Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
+        adminService.changeStatus(idx, adminRegisterNo, requestDto);
+
         SuccessResponse res = SuccessResponse.builder()
                 .status(StatusEnum.CREATED)
                 .message("노인 상태 변경 성공")
