@@ -1,11 +1,11 @@
 spring:
   datasource:
-    url: jdbc:mysql://52.78.83.195:3306/Dolbomi?serverTimezone=UTC&useLegacyDatetimeCode=false
-    username: woosung
-    password: 1234
+    url: jdbc:mysql://dolbomi-database.c3fgscikrkef.ap-northeast-2.rds.amazonaws.com:3306/Dolbomi?serverTimezone=UTC&useLegacyDatetimeCode=false
+    username: admin
+    password: young123
   redis:
     session:
-      host: 172.31.1.223
+      host: 3.38.116.4
       port: 6379
 
 mybatis:
