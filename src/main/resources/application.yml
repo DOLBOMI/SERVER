@@ -5,7 +5,7 @@ spring:
     password: young123
   redis:
     session:
-      host: 3.38.116.4
+      host: 172.31.1.51
       port: 6379
 
 mybatis:
