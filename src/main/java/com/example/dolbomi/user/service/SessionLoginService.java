@@ -12,7 +12,6 @@ import com.example.dolbomi.admin.domain.Admin;
 import com.example.dolbomi.admin.repository.AdminRepository;
 import com.example.dolbomi.global.util.crypto.CryptoData;
 import com.example.dolbomi.global.util.crypto.Encryptor;
-import com.example.dolbomi.global.util.session.SessionUtil;
 import com.example.dolbomi.user.controller.dto.LoginRequestDto;
 import com.example.dolbomi.user.domain.User;
 import com.example.dolbomi.user.repository.UserRepository;
