@@ -2,6 +2,7 @@ package com.example.dolbomi.admin.controller.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +13,12 @@ public class DeleteRequestDto {
     private Integer oldIndex;
 
     @Builder
-    public DeleteRequestDto(Integer oldIndex) {
+    public DeleteRequestDto(@JsonProperty("oldIndex") Integer oldIndex) {
         this.oldIndex = oldIndex;
+    }
+
+    @Builder
+    public DeleteRequestDto() {
+
     }
 }

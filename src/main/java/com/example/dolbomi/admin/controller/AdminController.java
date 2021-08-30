@@ -37,6 +37,7 @@ public class AdminController {
         return res;
     }
 
+    @AuthRequired(type = LoginType.ADMIN)
     @GetMapping("/status/i={oldIndex}")
     public SuccessResponse viewOld(@PathVariable("oldIndex") Integer oldI) {
         Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
@@ -50,6 +51,7 @@ public class AdminController {
         return res;
     }
 
+    @AuthRequired(type = LoginType.ADMIN)
     @GetMapping("/status/s={status}")
     public SuccessResponse viewStatus(@PathVariable("status") Integer s) {
         Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
@@ -63,6 +65,7 @@ public class AdminController {
         return res;
     }
 
+    @AuthRequired(type = LoginType.ADMIN)
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/register")
     public SuccessResponse register(@Valid @RequestBody final RegisterRequestDto requestDto) {
@@ -76,6 +79,7 @@ public class AdminController {
         return res;
     }
 
+    @AuthRequired(type = LoginType.ADMIN)
     @DeleteMapping("/delete")
     public SuccessResponse delete(@Valid @RequestBody final DeleteRequestDto requestDto) {
         Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();
@@ -88,6 +92,7 @@ public class AdminController {
         return res;
     }
 
+    @AuthRequired(type = LoginType.ADMIN)
     @PutMapping("/{idx}/status")
     public SuccessResponse changeStatus(@PathVariable("idx") Integer idx, @Valid @RequestBody final ChangeRequestDto requestDto) {
         Integer adminRegisterNo = sessionLoginService.getAdminRegisterNo();

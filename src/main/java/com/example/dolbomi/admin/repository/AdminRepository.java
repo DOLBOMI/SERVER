@@ -14,6 +14,10 @@ public interface AdminRepository {
 
     void insertUserAdmin(Integer oldIndex, Integer adminIndex);
 
+    void approveUser(Integer oldIndex);
+
+    void disApproveUser(Integer oldIndex);
+
     List<SimpleUser> findAllUser(Integer adminIndex);
 
     List<SimpleUser> findUser(Integer adminIndex, Integer oldI);
@@ -21,6 +25,7 @@ public interface AdminRepository {
     List<SimpleUser> findUserByStatus(Integer adminIndex, Integer status);
 
     Optional<Admin> findByRegisterNo(int registerNo);
+
     void deleteUserAdmin(Integer oldIndex, Integer adminIndex);
 
     void changeUserStatus(Integer status, Integer oldIndex);

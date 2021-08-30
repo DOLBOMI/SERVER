@@ -41,13 +41,13 @@
         WHERE registerNo = #{registerNo}
     </select>
 
-    <delete id="DeleteUserAdmin" parameterType="Integer">
+    <delete id="deleteUserAdmin" parameterType="Integer">
         DELETE
         FROM UserAdmin
         WHERE oldIndex = #{oldIndex} AND adminIndex = #{adminIndex};
     </delete>
 
-    <update id="ChangeUserStatus" parameterType="Integer">
+    <update id="changeUserStatus" parameterType="Integer">
         UPDATE User
         SET status = #{status}
         WHERE userIndex = #{oldIndex};
@@ -64,4 +64,16 @@
         FROM User
         WHERE registerNo = #{registerNo};
     </select>
+
+    <update id="approveUser" parameterType="Integer">
+        UPDATE User
+        SET isApproved = 1
+        WHERE userIndex = #{oldIndex};
+    </update>
+
+    <update id="disApproveUser" parameterType="Integer">
+        UPDATE User
+        SET isApproved = 0
+        WHERE userIndex = #{oldIndex};
+    </update>
 </mapper>

@@ -2,6 +2,7 @@ package com.example.dolbomi.admin.controller.dto;
 
 import lombok.Builder;
 import lombok.Getter;
+import org.codehaus.jackson.annotate.JsonProperty;
 
 import javax.validation.constraints.NotNull;
 
@@ -12,7 +13,12 @@ public class ChangeRequestDto {
     private Integer status;
 
     @Builder
-    public ChangeRequestDto(Integer status) {
+    public ChangeRequestDto(@JsonProperty("status") Integer status) {
         this.status = status;
+    }
+
+    @Builder
+    public ChangeRequestDto() {
+
     }
 }

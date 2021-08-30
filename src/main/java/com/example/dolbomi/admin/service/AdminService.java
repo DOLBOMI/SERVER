@@ -29,6 +29,7 @@ public class AdminService {
             throw new IllegalArgumentException("이미 등록한 사용자입니다.");
         }
         adminRepository.insertUserAdmin(oldIndex, adminIndex);
+        adminRepository.approveUser(oldIndex);
     }
 
     public List<SimpleUser> viewAll(Integer registerNo){
@@ -65,6 +66,7 @@ public class AdminService {
             throw new IllegalArgumentException("관리하고 있는 노인이 아닙니다.");
         }
         adminRepository.deleteUserAdmin(oldIndex, adminIndex);
+        adminRepository.disApproveUser(oldIndex);
     }
 
     public void changeStatus(Integer idx, Integer adminRegisterNo, ChangeRequestDto dto) {
