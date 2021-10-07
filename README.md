@@ -39,6 +39,11 @@
 
 </br>
 
+### 💡 DB ERD
+![image](https://user-images.githubusercontent.com/45346786/136348155-eadaabaa-08a9-4e70-b7eb-23254efdc067.png)
+
+
+</br>
 
 ### Rule/Convention
 - 커밋 메세지 컨벤션
