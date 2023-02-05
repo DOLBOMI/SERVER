@@ -49,7 +49,7 @@
 - 커밋 메세지 컨벤션
 - 코드 컨벤션
 - PR 규칙 </br></br>
-▶️ [Rule/Convention 보러가기](https://github.com/DOLBOMI/DOLBOMI_SERVER/wiki/Rule-&-Convention)
+▶️ [Rule/Convention 보러가기](https://github.com/DOLBOMI/DOLBOMI_SERVER/wiki/4.-Rule-&-Convention)
 
 
 </br>
