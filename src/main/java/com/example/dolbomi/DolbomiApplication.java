@@ -20,5 +20,4 @@ public class DolbomiApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DolbomiApplication.class, args);
 	}
-
 }
